@@ -58,6 +58,12 @@ artifacts/
 StyleCopReport.xml
 
 # Files built by Visual Studio
+=======
+# DNX
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
 *_i.c
 *_p.c
 *_i.h
@@ -68,6 +74,9 @@ StyleCopReport.xml
 *.pch
 *.pdb
 *.ipdb
+=======
+*.pch
+*.pdb
 *.pgc
 *.pgd
 *.rsp
@@ -170,6 +179,9 @@ publish/
 # Note: Comment the next line if you want to checkin your web deploy settings,
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
+# TODO: Comment the next line if you want to checkin your web deploy settings
+# but database connection strings (with potential passwords) will be unencrypted
+#*.pubxml
 *.publishproj
 
 # Microsoft Azure Web App publish settings. Comment the next line if you want to
@@ -186,6 +198,12 @@ PublishScripts/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/[Pp]ackages/repositories.config
 # NuGet v3's project.json files produces more ignorable files
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+# NuGet v3's project.json files produces more ignoreable files
 *.nuget.props
 *.nuget.targets
 
@@ -203,6 +221,7 @@ BundleArtifacts/
 Package.StoreAssociation.xml
 _pkginfo.txt
 *.appx
+=======
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -225,6 +244,10 @@ orleans.codegen.cs
 # (https://github.com/github/gitignore/pull/2483#issue-259490424)
 #*.snk
 
+=======
+node_modules/
+orleans.codegen.cs
+
 # Since there are multiple workflows, uncomment next line to ignore bower_components
 # (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
 #bower_components/
@@ -241,17 +264,20 @@ UpgradeLog*.XML
 UpgradeLog*.htm
 ServiceFabricBackup/
 *.rptproj.bak
+=======
 
 # SQL Server files
 *.mdf
 *.ldf
 *.ndf
+=======
 
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
 *.bim_*.settings
 *.rptproj.rsuser
+=======
 
 # Microsoft Fakes
 FakesAssemblies/
@@ -262,6 +288,7 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
+=======
 
 # Visual Studio 6 build log
 *.plg
@@ -272,6 +299,7 @@ node_modules/
 # Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
 *.vbw
 
+=======
 # Visual Studio LightSwitch build output
 **/*.HTMLClient/GeneratedArtifacts
 **/*.DesktopClient/GeneratedArtifacts
@@ -328,3 +356,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+=======
+*.pyc
