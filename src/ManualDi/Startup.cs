@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Immutable;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
-namespace WebApplication1
+namespace ManualDi
 {
     public class Startup
     {
@@ -23,7 +20,14 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            var repo = new ValueRepository();
+            var service = new ValueService(repo);
+            var controller = new ValuesController(service);
+
+            services.AddSingleton<IControllerActivator>(
+                _ => new ManualControllerActivator(new object[] { controller }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
